@@ -3,8 +3,8 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-{#    <link rel="stylesheet" href="{% static 'bootstrap/css/' %}">#}
-    <script type="text/javascript" href="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+{#    <link rel="stylesheet" href="{% static 'style.css' %}">#}
+{#    <script type="text/javascript" href="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>#}
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <script type="text/javascript"
@@ -28,12 +28,10 @@
                 </div>
                 <!-- primary nav -->
                 <div class="hidden md:flex items-center space-x-1">
-                    <a href="{% url 'index' %}" class="py-5 px-3 text-gray-700 hover:text-gray-900">Главная</a>
-                    <a href="{% url 'recipes' %}" class="py-5 px-3 text-gray-700 hover:text-gray-900">Рецепты</a>
-                    <a href="{% url 'add_recipe' %}" class="py-5 px-3 text-gray-700 hover:text-gray-900">
-                        Добавить рецепт
-                    </a>
-                    <a href="{% url 'categories' %}" class="py-5 px-3 text-gray-700 hover:text-gray-900">
+                    <a href="{% url 'index' %}" class="py-5 px-3">Главная</a>
+                    <a href="{% url 'recipes' %}" class="py-5 px-3">Рецепты</a>
+                    <a href="{% url 'add_recipe' %}" class="py-5 px-3">Добавить рецепт</a>
+                    <a href="{% url 'categories' %}" class="py-5 px-3">
                         Категории рецептов
                     </a>
                     <a href="{% url 'ingredients' %}"

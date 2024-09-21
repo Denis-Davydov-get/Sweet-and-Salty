@@ -13,6 +13,21 @@ class LoginUser(LoginView):
     template_name = 'userapp/login.html'
     extra_context = {'title': 'Авторизация'}
 
+    def login_user(request):
+        if request.method == "POST":
+            form = LoginUserForm(request.POST)
+            if form.is_valid():
+                user = authenticate(request,
+                                    username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password']
+                                    )
+                if user and user.is_active:
+                    login(request, user)
+                    return redirect('profile')
+        else:
+            form = LoginUserForm()
+        return render(request, 'userapp/profile.html', {'form': form})
+
 
 def logout_user(request):
     logout(request)
@@ -32,20 +47,7 @@ class ProfileUser(LoginRequiredMixin, UpdateView):
         return self.request.user
 
 
-def login_user(request):
-    if request.method == "POST":
-        form = LoginUserForm(request.POST)
-        if form.is_valid():
-            user = authenticate(request,
-                                username=form.cleaned_data['username'],
-                                password=form.cleaned_data['password']
-                                )
-            if user and user.is_active:
-                login(request, user)
-                return redirect('index')
-    else:
-        form = LoginUserForm()
-    return render(request, 'userapp/login.html', {'form': form})
+
 
 
 class UserPasswordChange(PasswordChangeView):
