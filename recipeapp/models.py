@@ -28,12 +28,18 @@ class Ingredient(models.Model):
 class Recipe(models.Model):
     name = models.CharField(max_length=50, unique=True)
     description = models.TextField()
-    steps = models.PositiveSmallIntegerField()
+    # steps = models.PositiveSmallIntegerField()
     cooking_time = models.PositiveSmallIntegerField()
     ingredients = models.ManyToManyField(Ingredient)
     categories = models.ManyToManyField(Category)
-    photo = models.ImageField(upload_to='recipe/', null=True, blank=True)
-    author = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='recipes', null=True, default=None)
+    photo = models.ImageField(upload_to='recipe/',
+                              null=True,
+                              blank=True)
+    author = models.ForeignKey(get_user_model(),
+                               on_delete=models.SET_NULL,
+                               related_name='recipes',
+                               null=True,
+                               default=None)
     views = models.PositiveIntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)

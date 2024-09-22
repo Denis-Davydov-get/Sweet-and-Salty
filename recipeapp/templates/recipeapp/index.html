@@ -2,61 +2,61 @@
 
 
 {% block content %}
-
-    <h1 class="text-success font-bold display-5 text-center mb-xxl-4"> Sweet and salty</h1>
-    <figure class="text-center">
-        <blockquote class="blockquote">
-            
+    <div class="container text-center">
+        <h1 class="text-success font-bold display-5 text-center mb-xxl-4"> Sweet and salty</h1>
+        <figure class="text-center">
+            <blockquote class="blockquote">
+                <p>
+                    Добро пожаловать на наш сайт рецептов!
+                </p>
+                <p>
+                    Здесь вы найдете множество вкусных и разнообразных рецептов блюд,
+                    которые можно приготовить как дома, так и для особых случаев.
+                </p>
+            </blockquote>
             <p>
-            Добро пожаловать на наш сайт рецептов! 
-            </p>
-            <p>
-            Здесь вы найдете множество вкусных и разнообразных рецептов блюд,
-            которые можно приготовить как дома, так и для особых случаев.
-            </p>
-        </blockquote>
-        <p>
-            Мы активно ищем и публикуем лучшие рецепты из разных кухонь мира, чтобы наш сайт был не только вкусным,
-            но и разнообразным.<br> 
-            В нашем арсенале есть рецепты для мясных блюд, для вегетарианцев,
-            для десертов и многое другое.<br> 
-            Каждый рецепт на сайте содержит подробную инструкцию и список ингредиентов, которые помогут вам приготовить
-            блюдо в домашних условиях.<br> 
-            Мы также делимся секретами и полезными советами, которые помогут вам приготовить
-            блюдо еще вкуснее и красивее.<br> 
+                Мы активно ищем и публикуем лучшие рецепты из разных кухонь мира, чтобы наш сайт был не только вкусным,
+                но и разнообразным.<br>
+                В нашем арсенале есть рецепты для мясных блюд, для вегетарианцев,
+                для десертов и многое другое.<br>
+                Каждый рецепт на сайте содержит подробную инструкцию и список ингредиентов, которые помогут вам
+                приготовить
+                блюдо в домашних условиях.<br>
+                Мы также делимся секретами и полезными советами, которые помогут вам приготовить
+                блюдо еще вкуснее и красивее.<br>
 
-            На нашем сайте вы можете создавать свой список любимых рецептов и делиться ими с друзьями. Мы постоянно
-            добавляем новые рецепты, поэтому следите за обновлениями и не пропустите новые интересные блюда.<br> 
+                На нашем сайте вы можете создавать свой список любимых рецептов и делиться ими с друзьями. Мы постоянно
+                добавляем новые рецепты, поэтому следите за обновлениями и не пропустите новые интересные блюда.<br>
 
-            Благодарим вас за посещение нашего сайта. Мы надеемся, что вы найдете здесь много полезной информации и
-            вдохновения для того, чтобы стать настоящим шеф-поваром домашней кухни!
+                Благодарим вас за посещение нашего сайта. Мы надеемся, что вы найдете здесь много полезной информации и
+                вдохновения для того, чтобы стать настоящим шеф-поваром домашней кухни!
+            </p>
+        </figure>
+
+        <p class="text-center mb-xl-3">
+            Пять наиболее часто просматриваемых рецептов:
         </p>
-    </figure>
 
-    <p class="text-center mb-xl-3">
-        Пять наиболее часто просматриваемых рецептов:
-    </p>
-
-    <div class="card-group gap-3">
-        {% for recipe in recipes %}
-            <div class="card" style="width: 15rem;">
-                {% if recipe.photo %}
-                    <img src="{{ recipe.photo.url }}" class="card-img" alt="изображение"
-                         style="object-fit: contain; height: 10rem">
-                {% endif %}
-                <div class="card-body">
-                    <h4 class="card-title"> {{ recipe.name }} | Автор: {{ recipe.author }}</h4>
-                    <h5 class="card-text"> Категории: {{ recipe.display_categories }}</h5>
-                    <h5 class="card-text"> Ингредиенты: {{ recipe.display_ingredients }}</h5>
-                    <h5 class="card-text"> Количество просмотров: {{ recipe.views }}</h5>
-                    <h5 class="card-text"> Дата добавления: {{ recipe.date_added }}</h5>
+        <div class="card-group gap-3">
+            {% for recipe in recipes %}
+                <div class="card" style="width: 15rem;">
+                    {% if recipe.photo %}
+                        <img src="{{ recipe.photo.url }}" class="card-img" alt="изображение"
+                             style="object-fit: contain; height: 10rem">
+                    {% endif %}
+                    <div class="card-body">
+                        <h4 class="card-title"> {{ recipe.name }} | Автор: {{ recipe.author }}</h4>
+                        <h5 class="card-text"> Категории: {{ recipe.display_categories }}</h5>
+                        <h5 class="card-text"> Ингредиенты: {{ recipe.display_ingredients }}</h5>
+                        <h5 class="card-text"> Количество просмотров: {{ recipe.views }}</h5>
+                        <h5 class="card-text"> Дата добавления: {{ recipe.date_added }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'recipe' recipe.name %}"
+                           class="hover:bg-yellow-300 hover:text-black btn btn-primary">Показать рецепт</a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <a href="{% url 'recipe' recipe.name %}"
-                       class="hover:bg-yellow-300 hover:text-black btn btn-primary">Показать рецепт</a>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-
 {% endblock %}

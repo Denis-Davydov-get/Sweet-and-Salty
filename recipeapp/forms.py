@@ -5,12 +5,17 @@ from .models import Category, Ingredient, Recipe
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        fields = ('name', 'description', 'steps', 'cooking_time', 'ingredients',
-                  'categories', 'photo')
+        fields = ('name',
+                  'description',
+                  # 'steps',
+                  'cooking_time',
+                  'ingredients',
+                  'categories',
+                  'photo')
         labels = {
             'name': 'Название',
             'description': 'Рецептура',
-            'steps': 'Количество шагов, шт.',
+            # 'steps': 'Количество шагов, шт.',
             'cooking_time': 'Время приготовления, в мин.',
             'ingredients': 'Ингредиенты',
             'categories': 'Категории рецепта',
@@ -42,12 +47,12 @@ class IngredientForm(forms.ModelForm):
 
 
 class CategoryForm(forms.ModelForm):
-    class Meta:
-        model = Category
-        fields = ('name',)
-        labels = {'name': 'Категория'}
-
     def __init__(self, *args, **kwargs):
         super(CategoryForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget = forms.TextInput(attrs={
             'placeholder': 'Введите название'})
+
+    class Meta:
+        model = Category
+        fields = ('name',)
+        labels = {'name': 'Категория'}

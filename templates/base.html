@@ -3,8 +3,8 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-{#    <link rel="stylesheet" href="{% static 'style.css' %}">#}
-{#    <script type="text/javascript" href="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>#}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script type="text/javascript" href="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <script type="text/javascript"
@@ -22,9 +22,9 @@
                 <!-- logo -->
                 <div>
                     <a href="{% url 'index' %}" class="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900">
-                    <i class='bx bxs-home mr-1 text-xl mb-1 text-green-700'></i>
-                    <span class="font-bold">Sweet and salty</span>
-                </a>
+                        <i class='bx bxs-home mr-1 text-xl mb-1 text-green-700'></i>
+                        <span class="font-bold">Sweet and salty</span>
+                    </a>
                 </div>
                 <!-- primary nav -->
                 <div class="hidden md:flex items-center space-x-1">
@@ -68,12 +68,10 @@
 <!-- content goes here -->
 
 <div class="py-32 h-screen" style="background-image:linear-gradient(to right top,#c7b0d9,#b0bd80)">
-    <div class="mx-auto p-2 text-center">
-        <div class="container">
-            {% block content %}
-                <p>Скоро тут появится текст...</p>
-            {% endblock %}
-        </div>
+    <div class="mx-auto p-2 ">
+        {% block content %}
+            <p>Скоро тут появится текст...</p>
+        {% endblock %}
     </div>
 </div>
 <footer class="mt-auto">
